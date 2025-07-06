@@ -71,9 +71,10 @@ POST /sales
 
 ```json
 {
-  "product": "Notebook",
-  "quantity": 2,
-  "totalPrice": 4200
+  "Product" : "Prego 18x27",
+  "Quantity" : 1,
+  "ProductExternalId" : "cfacac74-65f4-41f6-9625-767e810e8ae5",
+  "TotalPrice" : 7.33
 }
 ```
 
