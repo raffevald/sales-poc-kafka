@@ -94,3 +94,7 @@ services:
       - inventories-db-data:/var/lib/postgresql/data
     networks:
       - lich-sales-systens-net
+
+volumes:
+  sales-db-data:
+  inventories-db-data:
