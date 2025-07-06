@@ -1,0 +1,48 @@
+services:
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - lich-sales-systens-net
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"           # acesso externo
+      - "9093:9093"           # acesso interno (ex: outros containers)
+    environment:
+      - KAFKA_PROCESS_ROLES=broker,controller
+      - KAFKA_NODE_ID=1
+      - KAFKA_CLUSTER_ID=SFcQl4F9QcK6m0sy88npxA
+
+      # Listeners e portas
+      - KAFKA_LISTENERS=EXTERNAL://:9092,INTERNAL://0.0.0.0:9093,CONTROLLER://0.0.0.0:9094
+      - KAFKA_ADVERTISED_LISTENERS=EXTERNAL://localhost:9092,INTERNAL://kafka:9093
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
+
+      # Config do controller (KRaft)
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:9094
+    depends_on:
+      - zookeeper
+    networks:
+      - lich-sales-systens-net
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "9080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
+    depends_on:
+      - kafka
+    networks:
+      - lich-sales-systens-net
