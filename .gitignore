@@ -1,0 +1,76 @@
+## Build Results
+bin/
+obj/
+[Ll]og/
+*.log
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Rider
+.idea/
+
+## VS Code
+.vscode/
+.history/
+
+## Visual Studio
+.vs/
+Generated_Code/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Entity Framework
+Migrations/
+
+## DotCover
+*.dcvr
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## File-based secrets (use Secret Manager instead)
+secrets.json
+
+## Logs
+*.log
+logs/
+logs/**
+
+## Coverage / Test
+TestResults/
+coverage/
+coverage.*.json
+*.coverage
+*.coveragexml
+
+## Publish output
+publish/
+
+## Docker
+docker-compose.override.yml
+**/docker-compose*.yml
+
+## OS-specific
+.DS_Store
+Thumbs.db
+
+## Environment configs
+.env
+*.env.*
