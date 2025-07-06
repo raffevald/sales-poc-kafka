@@ -70,3 +70,13 @@ services:
       - sales-db-data:/var/lib/postgresql/data
     networks:
       - lich-sales-systens-net
+
+  inventory-service:
+    build:
+      context: ./src/InventoryService
+    ports:
+      - "5002:80"
+    depends_on:
+      - kafka
+    networks:
+      - lich-sales-systens-net
