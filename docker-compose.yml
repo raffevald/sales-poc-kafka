@@ -46,3 +46,13 @@ services:
       - kafka
     networks:
       - lich-sales-systens-net
+
+  sales-service:
+    build:
+      context: ./src/SalesService
+    ports:
+      - "5001:80"
+    depends_on:
+      - kafka
+    networks:
+      - lich-sales-systens-net
