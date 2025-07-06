@@ -68,6 +68,7 @@ services:
       - "5433:5432"
     volumes:
       - sales-db-data:/var/lib/postgresql/data
+      - ./src/SalesService/DataBase/Scripts/init-orders.sql:/docker-entrypoint-initdb.d/init-orders.sql
     networks:
       - lich-sales-systens-net
 
