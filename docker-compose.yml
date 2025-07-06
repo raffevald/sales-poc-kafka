@@ -80,3 +80,17 @@ services:
       - kafka
     networks:
       - lich-sales-systens-net
+
+  inventories-db:
+    image: postgres:15
+    container_name: inventories-db
+    environment:
+      POSTGRES_DB: inventoriesdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - inventories-db-data:/var/lib/postgresql/data
+    networks:
+      - lich-sales-systens-net
