@@ -56,3 +56,17 @@ services:
       - kafka
     networks:
       - lich-sales-systens-net
+
+  sales-db:
+    image: postgres:15
+    container_name: sales-db
+    environment:
+      POSTGRES_DB: salesdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - sales-db-data:/var/lib/postgresql/data
+    networks:
+      - lich-sales-systens-net
