@@ -54,8 +54,8 @@ services:
       - "5001:80"
     depends_on:
       - kafka
-    networks:
-      - lich-sales-systens-net
+    # networks:
+    #   - lich-sales-systens-net
 
   sales-db:
     image: postgres:15
@@ -69,8 +69,8 @@ services:
     volumes:
       - sales-db-data:/var/lib/postgresql/data
       - ./src/SalesService/DataBase/Scripts/init-orders.sql:/docker-entrypoint-initdb.d/init-orders.sql
-    networks:
-      - lich-sales-systens-net
+    # networks:
+    #   - lich-sales-systens-net
 
   inventory-service:
     build:
@@ -79,8 +79,8 @@ services:
       - "5002:80"
     depends_on:
       - kafka
-    networks:
-      - lich-sales-systens-net
+    # networks:
+    #   - lich-sales-systens-net
 
   inventories-db:
     image: postgres:15
@@ -93,8 +93,8 @@ services:
       - "5434:5432"
     volumes:
       - inventories-db-data:/var/lib/postgresql/data
-    networks:
-      - lich-sales-systens-net
+    # networks:
+    #   - lich-sales-systens-net
 
 volumes:
   sales-db-data:
