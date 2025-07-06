@@ -98,3 +98,7 @@ services:
 volumes:
   sales-db-data:
   inventories-db-data:
+
+networks:
+  lich-sales-systens-net:
+    driver: bridge
